@@ -15,15 +15,14 @@ class Contacts extends Component {
   render() {
     return (
       <>
-        <h2>Contacts</h2>
-        <list>
+        <List>
           {this.props.userInfo.map((user) => (
             <li id={user.id}>
               {user.name} : {user.telephone}
               <button id={user.id} onClick={this.contactId}>Delete</button>
             </li>
           ))}
-        </list>
+        </List>
       </>
     );
   }
