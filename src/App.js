@@ -13,16 +13,18 @@ class App extends Component{
     }
   }
   setNewContact=(name,telephone)=>{
-    // if(this.state.contacts.name.value==name){
-    //   alert("This contact is already in the phone book.")
-    // } else{
-    //   this.setState((prev)=>({
-    //     contacts:[...prev.contacts,{id:nanoid(),name,telephone}]
-    //   }))
-    // }
-    this.setState((prev)=>({
-      contacts:[...prev.contacts,{id:nanoid(),name,telephone}]
-    }))
+    const isDuplicate = this.state.contacts.some(
+      (contact) => contact.name == name
+    );
+  
+    if (isDuplicate) {
+      alert("A contact with this name already exists!");
+      return;
+    }else{
+      this.setState((prev) => ({
+        contacts: [...prev.contacts, { id: nanoid(), name, telephone }]
+      }));
+    }
   }
   delete=(id)=>{
     this.setState((prev)=>({
